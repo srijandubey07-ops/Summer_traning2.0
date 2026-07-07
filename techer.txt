@@ -1,0 +1,88 @@
+Enter password: *****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 19
+Server version: 8.0.46 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2026, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> CREATE DATABASE IF NOT EXISTS SCHOOLDB;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> USE SCHOOLDB;
+Database changed
+mysql> CREATE TABLE IF NOT EXISTS Teacher (
+    ->     EMPID INT PRIMARY KEY,
+    ->     NAME VARCHAR(50) NOT NULL,
+    ->     SALARY DECIMAL(10,2),
+    ->     EXP INT
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> INSERT INTO Teacher VALUES (101, 'Dr. Sharma', 95000.00, 20);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Teacher VALUES (102, 'Dr. Verma', 92000.00, 18);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Teacher VALUES (103, 'Dr. Singh', 88000.00, 15);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Teacher VALUES (104, 'Dr. Shivam Yadav', 85000.00, 10);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Teacher VALUES (105, 'Dr. Mehta', 82000.00, 12);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Teacher VALUES (106, 'Dr. Gupta', 78000.00, 8);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Teacher VALUES (107, 'Dr. Rani', 76000.00, 7);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> DESCRIBE Teacher;
++--------+---------------+------+-----+---------+-------+
+| Field  | Type          | Null | Key | Default | Extra |
++--------+---------------+------+-----+---------+-------+
+| EMPID  | int           | NO   | PRI | NULL    |       |
+| NAME   | varchar(50)   | NO   |     | NULL    |       |
+| SALARY | decimal(10,2) | YES  |     | NULL    |       |
+| EXP    | int           | YES  |     | NULL    |       |
++--------+---------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Teacher;
++-------+------------------+----------+------+
+| EMPID | NAME             | SALARY   | EXP  |
++-------+------------------+----------+------+
+|   101 | Dr. Sharma       | 95000.00 |   20 |
+|   102 | Dr. Verma        | 92000.00 |   18 |
+|   103 | Dr. Singh        | 88000.00 |   15 |
+|   104 | Dr. Shivam Yadav | 85000.00 |   10 |
+|   105 | Dr. Mehta        | 82000.00 |   12 |
+|   106 | Dr. Gupta        | 78000.00 |    8 |
+|   107 | Dr. Rani         | 76000.00 |    7 |
++-------+------------------+----------+------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT EMPID, NAME, SALARY, EXP
+    -> FROM Teacher
+    -> ORDER BY SALARY DESC
+    -> LIMIT 5;
++-------+------------------+----------+------+
+| EMPID | NAME             | SALARY   | EXP  |
++-------+------------------+----------+------+
+|   101 | Dr. Sharma       | 95000.00 |   20 |
+|   102 | Dr. Verma        | 92000.00 |   18 |
+|   103 | Dr. Singh        | 88000.00 |   15 |
+|   104 | Dr. Shivam Yadav | 85000.00 |   10 |
+|   105 | Dr. Mehta        | 82000.00 |   12 |
++-------+------------------+----------+------+
+5 rows in set (0.00 sec)
+
+mysql>
